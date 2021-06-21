@@ -1,0 +1,12 @@
+ul{
+ /* display: inline; */
+}
+ul li{
+ list-style: none;
+ display: inline;
+ padding: 1rem;
+}
+
+.navLink{
+    text-decoration: none;
+   }
