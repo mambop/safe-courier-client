@@ -7,5 +7,10 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Error fix:  SharedArrayBuffer will require cross-origin isolation -->
+    <script>
+      if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer;
+    </script>
   </body>
 </html>

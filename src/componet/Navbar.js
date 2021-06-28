@@ -1,26 +1,46 @@
+import axios from 'axios';
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import AuthContext from '../AuthContext';
-import LogoutBtn from './LogoutBtn';
 
 function Navbar() {
-    const { loggedin } = useContext(AuthContext);
+
+    const { loggedin, getLoggedin } = useContext(AuthContext);
+    const history = useHistory();
+
+    //handle user logout
+    async function logout() {
+        await axios.get("http://localhost:5000/api/v1/auth/logout");
+
+        //load home componet & update state 
+        await getLoggedin();
+
+        //redirect to home page after login
+        history.push("/");
+    }
     return (
         <div>
             <ul>
-               
-                {loggedin == false &&
+                <li><Link to="/" className="navLink">Home</Link></li>
+                {loggedin === false &&
                     <>
-                        <li><Link to="/signup" className="navLink">Signup</Link></li>
-                        <li><Link to="/login" className="navLink">Login</Link></li>
+                        <li><Link to="/api/v1/auth/signup" className="navLink">Signup</Link></li>
+                        <li><Link to="/api/v1/auth/login" className="navLink">User Login</Link></li>
+                        <li><Link to="/api/v1/adminLogin/" className="navLink">Admin Login</Link></li>
+                    </>
+
+                }
+                {loggedin === true &&
+                    <>
+                        {/* <li><Link to="/api/v1/orders/" className="navLink">Orders</Link></li> */}
+                        <li><Link to="/api/v1/users/:userId/orders" className="navLink">Orders</Link></li>
+                        <li><Link to="/api/v1/adminLogin/admin/" className="navLink">Admin/Orders</Link></li>
+                        <li><Link to="/api/v1//auth/logout" className="navLink" onClick={logout}>Logout</Link></li>
+                        
                     </>
                 }
-                {loggedin == true &&
-                    <>
-                        <li><Link to="/order" className="navLink">Create Order</Link></li>
-                        <LogoutBtn />
-                    </>
-                }
+
+
             </ul>
         </div>
     )

@@ -3,7 +3,7 @@ import React, { useState, useContext } from 'react'
 import AuthContext from '../AuthContext';
 import { useHistory } from 'react-router-dom';
 
-function Login() {
+function AdminLogin() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,13 +13,13 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     const loginData = { email, password };
-    await axios.post("http://localhost:5000/api/v1/auth/login", loginData);
+    await axios.post("http://localhost:5000/api/v1/admin/adminLogin", loginData);
     
     //load login componet & update state
     await getLoggedin();
 
     //redirect to home page after login
-    history.push("orders/");
+    history.push("admin/");
 
   }
   return (
@@ -39,5 +39,5 @@ function Login() {
   )
 }
 
-export default Login
+export default AdminLogin
 
