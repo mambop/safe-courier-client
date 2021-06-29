@@ -4,7 +4,8 @@ import Navbar from "./componet/Navbar";
 import Home from "./componet/Home";
 import Signup from "./componet/Signup";
 import Login from "./componet/Login";
-import Orders from "./componet/Orders";
+import OrdersList from "./componet/OrdersList";
+import OrderForm from "./componet/OrderForm";
 import AdminLogin from "./componet/AdminLogin";
 import Admin from "./componet/Admin";
 import AuthContext from './AuthContext';
@@ -29,8 +30,8 @@ function Routes() {
                 {loggedin === true &&
                     <>
                         <Route path="/api/v1/adminLogin/admin/"><Admin /></Route>
-                        {/* <Route path="/api/v1/orders/"><Orders /></Route> */}
-                        <Route path="/api/v1/users/:userId/orders"><Orders /></Route>
+                        <Route path="/api/v1/users/:userId/orders"><OrdersList /></Route>
+                        <Route path="/api/v1/users/:userId/create"><OrderForm /></Route>
                     </>
                 }
             </Switch>

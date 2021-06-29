@@ -15,8 +15,7 @@ function OrderForm({ getOrders }) {
         e.preventDefault();
         try {
             const orderData = { name, contact, order, destination, pickup };
-            // await axios.post('http://localhost:5000/api/v1/orders/', orderData);
-            await axios.post(`http://localhost:5000/api/v1/users/${userId}/orders`, orderData);
+            await axios.post(`http://localhost:5000/api/v1/users/${userId}/create`, orderData);
             getOrders();
         } catch (error) {
             console.error(error);
@@ -30,7 +29,7 @@ function OrderForm({ getOrders }) {
                     <input type="text" placeholder="Recipients Name" onChange={(e) => { setName(e.target.value) }} value={name} />
                 </div>
                 <div>
-                    <input type="text" placeholder="Recipients  Contact" onChange={(e) => { setContact(e.target.value) }} value={contact} />
+                    <input type="text" placeholder="Recipients Contact" onChange={(e) => { setContact(e.target.value) }} value={contact} />
                 </div>
                 <div>
                     <input type="text" placeholder="Order" onChange={(e) => { setOrder(e.target.value) }} value={order} />

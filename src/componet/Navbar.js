@@ -32,8 +32,8 @@ function Navbar() {
                 }
                 {loggedin === true &&
                     <>
-                        {/* <li><Link to="/api/v1/orders/" className="navLink">Orders</Link></li> */}
-                        <li><Link to="/api/v1/users/:userId/orders" className="navLink">Orders</Link></li>
+                      <li><Link to="/api/v1/users/:userId/orders" className="navLink">Orders</Link></li>
+                        <li><Link to="/api/v1/users/:userId/create" className="navLink">Create</Link></li>
                         <li><Link to="/api/v1/adminLogin/admin/" className="navLink">Admin/Orders</Link></li>
                         <li><Link to="/api/v1//auth/logout" className="navLink" onClick={logout}>Logout</Link></li>
                         

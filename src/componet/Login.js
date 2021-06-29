@@ -19,7 +19,7 @@ function Login() {
     await getLoggedin();
 
     //redirect to home page after login
-    history.push("orders/");
+    history.push("/users/:userId/orders");
 
   }
   return (
