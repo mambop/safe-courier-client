@@ -14,6 +14,7 @@ function AdminLogin() {
     e.preventDefault();
     const loginData = { email, password };
     await axios.post("https://safe-courier-app.herokuapp.com/api/v1/admin/adminLogin", loginData);
+        // await axios.post("http://locahost:5000/api/v1/admin/adminLogin", loginData);
 
     
     //load login componet & update state

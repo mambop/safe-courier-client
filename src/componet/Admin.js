@@ -9,7 +9,8 @@ function Admin() {
 
   // get user order
   async function getOrders() {
-    const reponse = await axios.get('    https://safe-courier-app.herokuapp.com/api/v1/auth/admin');
+    const reponse = await axios.get(' https://safe-courier-app.herokuapp.com/api/v1/auth/admin');
+    // const reponse = await axios.get('http://locahost:5000/api/v1/auth/admin');
 
     setOrders(reponse.data);
   }
@@ -17,6 +18,7 @@ function Admin() {
   // update order status
   async function updateStatus(id) {
     await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/status`, {
+      // await axios.put(`http://locahost:5000/api/v1/admin/status`, {
       
       id: id,
       status: status
@@ -27,6 +29,7 @@ function Admin() {
   // update order present location
   async function updatePresentLoc(id) {
     await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/presentLoc`, {
+          // await axios.put(`http://locahost:5000/api/v1/admin/presentLoc`, {
     
       id: id,
       presentLoc: presentLoc

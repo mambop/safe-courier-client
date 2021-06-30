@@ -12,6 +12,7 @@ function OrdersList() {
     async function userOrders() {
 
         const response = await axios.get(`https://safe-courier-app.herokuapp.com/api/v1/users/${userId}/orders`);
+// const response = await axios.get(`http://locahost:5000/api/v1/users/${userId}/orders`);
       
         setOrders(response.data);
     }
@@ -19,6 +20,7 @@ function OrdersList() {
   // update order destination
     async function updateDestination(id) {
         await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/users/destination`, {
+            // await axios.put(`http://locahost:5000/api/v1/users/destination`, {
     
             id: id,
             destination: destination
@@ -30,6 +32,7 @@ function OrdersList() {
     async function cancelOrder(orderId) {
 
         await axios.delete(`https://safe-courier-app.herokuapp.com/api/v1/orders/cancel/${orderId}`);
+        // await axios.delete(`http://locahost:5000/api/v1/orders/cancel/${orderId}`);
 
         history.push("/api/v1/users/orders");
 
