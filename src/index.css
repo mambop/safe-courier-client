@@ -10,3 +10,10 @@ ul li{
 .navLink{
     text-decoration: none;
    }
+
+form div{
+padding: .5rem;
+}
+ form input{
+     padding: .5rem;
+ }

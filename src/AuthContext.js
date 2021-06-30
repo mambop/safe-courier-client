@@ -4,11 +4,11 @@ import React, { createContext, useEffect, useState } from 'react'
 const AuthContext = createContext();
 
 // check for user loggin when app starts
-function AuthContextProvider(props) {
+function AuthContextProvider(props) {  
     const [loggedin, setLoggedin] = useState();
 
     async function getLoggedin() {
-        const loggedinRes = await axios("https://safe-courier-app.herokuapp.com/auth/loggedin");
+        const loggedinRes = await axios.get("http://localhost:5000/api/v1/auth/loggedin");
         setLoggedin(loggedinRes.data);
     }
     // run function when app starts

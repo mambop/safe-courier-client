@@ -1,52 +1,44 @@
-import axios from "axios";
-import React, { useState,useContext } from "react";
-import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import React, { useState, useContext } from 'react'
 import AuthContext from '../AuthContext';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { getLoggedin } = useContext(AuthContext);
   const history = useHistory();
 
-  async function submitForm(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const loginData = { email, password };
+    const loginData = { email, password };
+    await axios.post("http://localhost:5000/api/v1/auth/login", loginData)
+    alert("Successful");
+    
+    //load login componet & update state
+    await getLoggedin();
 
-      //make request to server
-      await axios.post("https://safe-courier-app.herokuapp.com/auth/login",loginData);
-      await getLoggedin();
-      history.push("/");
-      
-    } catch (err) {
-      console.error(err);
-    }
+    //redirect to home page after login
+    history.push("/api/v1/users/orders");
+
   }
   return (
     <div>
-      <h1>Login Form</h1>
-      <form onSubmit={submitForm}>
-        <input
-          type="email"
-          placeholder="Email"
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
-          value={email}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-          value={password}
-        />
-        <button type="submit">Login in</button>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input type="email" placeholder="Email" onChange={(e) => { setEmail(e.target.value); }} value={email} />
+        </div>
+        <div>
+          <input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value); }} value={password} />
+        </div>
+        <div>
+          <button type="submit">Login</button>
+        </div>
       </form>
     </div>
-  );
+  )
 }
 
-export default Login;
+export default Login
+
