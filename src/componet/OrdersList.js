@@ -11,14 +11,14 @@ function OrdersList() {
 
     async function userOrders() {
 
-        const response = await axios.get(`https://safe-courier-phillip.netlify.app/api/v1/users/${userId}/orders`);
+        const response = await axios.get(`https://safe-courier-app.herokuapp.com/api/v1/users/${userId}/orders`);
       
         setOrders(response.data);
     }
 
   // update order destination
     async function updateDestination(id) {
-        await axios.put(`  https://safe-courier-phillip.netlify.app/api/v1/users/destination`, {
+        await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/users/destination`, {
     
             id: id,
             destination: destination
@@ -29,7 +29,7 @@ function OrdersList() {
 
     async function cancelOrder(orderId) {
 
-        await axios.delete(`https://safe-courier-phillip.netlify.app/api/v1/orders/cancel/${orderId}`);
+        await axios.delete(`https://safe-courier-app.herokuapp.com/api/v1/orders/cancel/${orderId}`);
 
         history.push("/api/v1/users/orders");
 

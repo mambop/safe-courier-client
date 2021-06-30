@@ -8,7 +8,7 @@ function AuthContextProvider(props) {
     const [loggedin, setLoggedin] = useState();
 
     async function getLoggedin() {
-        const loggedinRes = await axios.get("https://safe-courier-phillip.netlify.app/api/v1/auth/loggedin");
+        const loggedinRes = await axios.get("https://safe-courier-app.herokuapp.com/api/v1/auth/loggedin");
     
         setLoggedin(loggedinRes.data);
     }
