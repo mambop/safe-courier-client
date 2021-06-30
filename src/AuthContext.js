@@ -9,6 +9,7 @@ function AuthContextProvider(props) {
 
     async function getLoggedin() {
         const loggedinRes = await axios.get("https://safe-courier-app.herokuapp.com/api/v1/auth/loggedin");
+        // const loggedinRes = await axios.get("http://locahost:5000/api/v1/auth/loggedin");
     
         setLoggedin(loggedinRes.data);
     }
