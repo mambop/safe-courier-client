@@ -15,7 +15,7 @@ function OrderForm({ getOrders }) {
         e.preventDefault();
         try {
             const orderData = { name, contact, order, destination, pickup };
-            await axios.post('   https://safe-courier-phillip.netlify.app/api/v1/orders/', orderData);
+            await axios.post('https://safe-courier-app.herokuapp.com/api/v1/orders/', orderData);
             
         } catch (error) {
             console.error(error);

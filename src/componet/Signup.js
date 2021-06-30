@@ -16,7 +16,7 @@ function Signup() {
     e.preventDefault();
     try {
       const signupData = {email, password };
-      await axios.post(" https://safe-courier-phillip.netlify.app/api/v1/auth/signup", signupData);
+      await axios.post("https://safe-courier-app.herokuapp.com/api/v1/auth/signup", signupData);
 
 
       //load signup componet & update state 

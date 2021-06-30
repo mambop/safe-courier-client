@@ -9,14 +9,14 @@ function Admin() {
 
   // get user order
   async function getOrders() {
-    // const reponse = await axios.get('http://localhost:5000/api/v1/admin/');
-    const reponse = await axios.get('https://safe-courier-phillip.netlify.app/api/v1/admin');
+    const reponse = await axios.get('    https://safe-courier-app.herokuapp.com/api/v1/auth/admin');
+
     setOrders(reponse.data);
   }
 
   // update order status
   async function updateStatus(id) {
-    await axios.put(`  https://safe-courier-phillip.netlify.app/api/v1/admin/status`, {
+    await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/status`, {
       
       id: id,
       status: status
@@ -26,7 +26,7 @@ function Admin() {
 
   // update order present location
   async function updatePresentLoc(id) {
-    await axios.put(`https://safe-courier-phillip.netlify.app/api/v1/admin/presentLoc`, {
+    await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/presentLoc`, {
     
       id: id,
       presentLoc: presentLoc
