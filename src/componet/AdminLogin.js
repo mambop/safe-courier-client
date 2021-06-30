@@ -19,7 +19,7 @@ function AdminLogin() {
     await getLoggedin();
 
     //redirect to home page after login
-    history.push("admin/");
+    history.push("/api/v1/adminLogin/admin/");
 
   }
   return (

@@ -1,28 +1,40 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useHistory } from 'react-router-dom';
 
 function OrdersList() {
     const [orders, setOrders] = useState([]);
-    const { userId} = useParams();
+    const [destination, setNewDestination] = useState('');
+    const { userId } = useParams();
+    const history = useHistory();
 
-    async function getOrders() {
-        // const reponse = await axios.get('http://localhost:5000/api/v1/orders/');
-        const reponse = await axios.get(`http://localhost:5000/api/v1/users/${userId}/orders`);
-        setOrders(reponse.data);
-    }
-    async function updateDestination() {
-        const reponse = await axios.get('http://localhost:5000/api/v1/users/:orderId/destination');
-        setOrders(reponse.data);
+
+    async function userOrders() {
+
+        const response = await axios.get(`http://localhost:5000/api/v1/users/${userId}/orders`);
+        setOrders(response.data);
     }
 
-    async function cancel() {
-        const reponse = await axios.get('http://localhost:5000/api/v1/order/:orderId/cancel');
-        setOrders(reponse.data);
+  // update order destination
+    async function updateDestination(id) {
+        await axios.put(`http://localhost:5000/api/v1/users/destination`, {
+            id: id,
+            destination: destination
+
+        });
+    
     }
+
+    async function cancelOrder(orderId) {
+
+        await axios.delete(`http://localhost:5000/api/v1/orders/cancel/${orderId}`);
+        history.push("/api/v1/users/orders");
+
+    }
+
     useEffect(() => {
-        getOrders();
-        // updateDestination();
+        userOrders();
+
     });
 
     function renderOrders() {
@@ -38,9 +50,12 @@ function OrdersList() {
                     <li>Order:</li>
                     <li>{order.order}</li>
                     <br />
-                    <li>Destination:</li>
-                    {/* <li><Link to={`/users/${orderId}/destination`}>{order.destination}</Link></li> */}
-                    <li><Link to={`users/${order._id}/create`}>{order.destination}</Link></li>
+                    <li>Destination : <span>{order.destination}</span></li>
+
+                    <li>
+                        <input type="text" placeholder="Update Destination" onChange={(e) => { setNewDestination(e.target.value) }}/>
+                        <button onClick={() => { updateDestination(order._id) }}>Update</button>
+                    </li>
                     <br />
                     <li>Pickup Location:</li>
                     <li>{order.pickup}</li>
@@ -51,10 +66,9 @@ function OrdersList() {
                     <li>Status:</li>
                     <li>{order.status}</li>
                     <br />
-                    <li><Link onClick={cancel}>Cancel</Link></li>
+                    <li><button onClick={() => { cancelOrder(order._id) }}>Cancel</button></li>
                     <br /><br />
                 </ul>
-
             )
         })
     }

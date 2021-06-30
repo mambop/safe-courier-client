@@ -4,8 +4,8 @@ import axios from 'axios';
 function Admin() {
 
   const [orders, setOrders] = useState([]);
-  const [status, setStatus] = useState();
-  const [presentLoc, setPresentLoc] = useState();
+  const [status, setStatus] = useState("");
+  const [presentLoc, setPresentLoc] = useState("");
 
   // get user order
   async function getOrders() {
@@ -13,18 +13,25 @@ function Admin() {
     setOrders(reponse.data);
   }
 
+  // update order status
+  async function updateStatus(id) {
+    await axios.put(`http://localhost:5000/api/v1/admin/status`, {
+      id: id,
+      status: status
 
-  // update user order fields
-  async function handleSubmit(e) {
-    e.preventDefault();
-    try {
-      const orderAdminData = { status, presentLoc };
-      await axios.post('http://localhost:5000/api/v1/admin/', orderAdminData);
-      getOrders();
-    } catch (error) {
-      console.error(error);
-    }
+    });
   }
+
+  // update order present location
+  async function updatePresentLoc(id) {
+    await axios.put(`http://localhost:5000/api/v1/admin/presentLoc`, {
+      id: id,
+      presentLoc: presentLoc
+
+    });
+  }
+
+
   useEffect(() => {
     getOrders();
   });
@@ -34,13 +41,32 @@ function Admin() {
     return orders.map((order, i) => {
       return (
         <ul key={i}>
+          <li>Recepient Name:</li>
           <li>{order.name}</li>
+          <br/>
+          <li>Recipients Contact:</li>
           <li>{order.contact}</li>
+          <br/>
+          <li>Order:</li>
           <li>{order.order}</li>
-          <li>{order.pickup}</li>
+          <br/>
+          <li>Destination:</li>
           <li>{order.destination}</li>
-          <li>{order.status}</li>
-          <li>{order.presentLoc}</li>
+          <br/>
+          <li>Pickup Location:</li>
+          <li>{order.pickup}</li>
+          <br/>
+          <li>Present Location : <span>{order.presentLoc}</span></li>
+          <li>
+            <input type="text" placeholder="Update present location" onChange={(e) => { setPresentLoc(e.target.value) }} />
+            <button onClick={() => { updatePresentLoc(order._id) }}>Present Location</button>
+          </li>
+          <br/>
+          <li>Status : <span>{order.status}</span></li>
+          <li>
+            <input type="text" placeholder="Update Status" onChange={(e) => { setStatus(e.target.value) }} />
+            <button onClick={() => { updateStatus(order._id) }}>Status</button>
+          </li>
         </ul>
 
       )
@@ -48,17 +74,6 @@ function Admin() {
   }
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input type="text" placeholder="Status" onChange={(e) => { setStatus(e.target.value) }} value={status} />
-        </div>
-        <div>
-          <input type="text" placeholder="Present Location" onChange={(e) => { setPresentLoc(e.target.value) }} value={presentLoc} />
-        </div>
-
-        <button type="submit">Submit</button>
-      </form>
-
       {renderUpdates()}
     </div>
   )

@@ -15,8 +15,8 @@ function OrderForm({ getOrders }) {
         e.preventDefault();
         try {
             const orderData = { name, contact, order, destination, pickup };
-            await axios.post(`http://localhost:5000/api/v1/users/${userId}/create`, orderData);
-            getOrders();
+            await axios.post('http://localhost:5000/api/v1/orders/', orderData);
+            
         } catch (error) {
             console.error(error);
         }
@@ -40,12 +40,7 @@ function OrderForm({ getOrders }) {
                 <div>
                     <input type="text" placeholder="Pickup Location" onChange={(e) => { setPickup(e.target.value) }} value={pickup} />
                 </div>
-                {/* <div>
-                    <label>Present Location:<span onChange={(e) => { setPresentLoc(e.target.value) }} value={presentLoc}>None</span></label>
-                </div>
-                <div>
-                    <label>Status:<span onChange={(e) => { setStatus(e.target.value) }} value={status}>None</span></label>
-                </div> */}
+           
                 <button type="submit">Submit</button>
             </form>
         </div>

@@ -22,7 +22,7 @@ function Signup() {
       await getLoggedin()
 
       //redirect to home page after signup
-      history.push("/");
+      history.push("/api/v1/create/");
 
 
 

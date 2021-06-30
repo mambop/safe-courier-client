@@ -30,8 +30,8 @@ function Routes() {
                 {loggedin === true &&
                     <>
                         <Route path="/api/v1/adminLogin/admin/"><Admin /></Route>
-                        <Route path="/api/v1/users/:userId/orders"><OrdersList /></Route>
-                        <Route path="/api/v1/users/:userId/create"><OrderForm /></Route>
+                        <Route path="/api/v1/users/orders"><OrdersList /></Route>
+                        <Route path="/api/v1/create/"><OrderForm /></Route>
                     </>
                 }
             </Switch>

@@ -13,13 +13,14 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     const loginData = { email, password };
-    await axios.post("http://localhost:5000/api/v1/auth/login", loginData);
+    await axios.post("http://localhost:5000/api/v1/auth/login", loginData)
+    alert("Successful");
     
     //load login componet & update state
     await getLoggedin();
 
     //redirect to home page after login
-    history.push("/users/:userId/orders");
+    history.push("/api/v1/users/orders");
 
   }
   return (

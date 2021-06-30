@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useContext } from 'react'
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext, useState, useEffect  } from 'react'
+import { Link, useHistory,useParams } from 'react-router-dom';
 import AuthContext from '../AuthContext';
 
 function Navbar() {
 
     const { loggedin, getLoggedin } = useContext(AuthContext);
+
     const history = useHistory();
 
     //handle user logout
@@ -18,6 +19,7 @@ function Navbar() {
         //redirect to home page after login
         history.push("/");
     }
+
     return (
         <div>
             <ul>
@@ -32,9 +34,9 @@ function Navbar() {
                 }
                 {loggedin === true &&
                     <>
-                      <li><Link to="/api/v1/users/:userId/orders" className="navLink">Orders</Link></li>
-                        <li><Link to="/api/v1/users/:userId/create" className="navLink">Create</Link></li>
-                        <li><Link to="/api/v1/adminLogin/admin/" className="navLink">Admin/Orders</Link></li>
+                      <li><Link to={"/api/v1/users/orders"} className="navLink">Orders</Link></li>
+                        <li><Link to="/api/v1/create/" className="navLink">Create</Link></li>
+                        <li><Link to="/api/v1/adminLogin/admin/" className="navLink">Admin</Link></li>
                         <li><Link to="/api/v1//auth/logout" className="navLink" onClick={logout}>Logout</Link></li>
                         
                     </>
