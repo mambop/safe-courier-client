@@ -13,7 +13,8 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
     const loginData = { email, password };
-    await axios.post("http://localhost:5000/api/v1/auth/login", loginData)
+    await axios.post("https://safe-courier-phillip.netlify.app/api/v1/auth/login", loginData)
+  
     alert("Successful");
     
     //load login componet & update state

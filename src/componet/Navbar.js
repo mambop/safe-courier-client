@@ -11,7 +11,7 @@ function Navbar() {
 
     //handle user logout
     async function logout() {
-        await axios.get("http://localhost:5000/api/v1/auth/logout");
+        await axios.get("https://safe-courier-phillip.netlify.app/api/v1/auth/logout");
 
         //load home componet & update state 
         await getLoggedin();
