@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useContext, useState, useEffect  } from 'react'
-import { Link, useHistory,useParams } from 'react-router-dom';
+import React, { useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom';
 import AuthContext from '../AuthContext';
 
 function Navbar() {
@@ -12,7 +12,7 @@ function Navbar() {
     //handle user logout
     async function logout() {
         await axios.get("https://safe-courier-app.herokuapp.com/api/v1/auth/logout");
-        // await axios.get("http://locahost:5000/api/v1/auth/logout");
+        // await axios.get("http://localhost:5000/api/v1/auth/logout");
 
         //load home componet & update state 
         await getLoggedin();
@@ -22,7 +22,7 @@ function Navbar() {
     }
 
     return (
-        <div>
+        <nav className="navbar navbar-dark bg-dark navbar-nav">
             <ul>
                 <li><Link to="/" className="navLink">Home</Link></li>
                 {loggedin === false &&
@@ -35,17 +35,17 @@ function Navbar() {
                 }
                 {loggedin === true &&
                     <>
-                      <li><Link to={"/api/v1/users/orders"} className="navLink">Orders</Link></li>
+                        <li><Link to={"/api/v1/users/orders"} className="navLink">Orders</Link></li>
                         <li><Link to="/api/v1/create/" className="navLink">Create</Link></li>
                         <li><Link to="/api/v1/adminLogin/admin/" className="navLink">Admin</Link></li>
                         <li><Link to="/api/v1//auth/logout" className="navLink" onClick={logout}>Logout</Link></li>
-                        
+
                     </>
                 }
 
 
             </ul>
-        </div>
+        </nav>
     )
 }
 

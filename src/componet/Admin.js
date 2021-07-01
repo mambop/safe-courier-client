@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function Admin() {
 
   const [orders, setOrders] = useState([]);
   const [status, setStatus] = useState("");
   const [presentLoc, setPresentLoc] = useState("");
+  const { id } = useParams();
 
   // get user order
   async function getOrders() {
-    const reponse = await axios.get(' https://safe-courier-app.herokuapp.com/api/v1/auth/admin');
-    // const reponse = await axios.get('http://locahost:5000/api/v1/auth/admin');
+    const reponse = await axios.get('https://safe-courier-app.herokuapp.com/api/v1/admin/');
+    // const reponse = await axios.get('http://localhost:5000/api/v1/admin/');
 
     setOrders(reponse.data);
   }
@@ -18,8 +20,8 @@ function Admin() {
   // update order status
   async function updateStatus(id) {
     await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/status`, {
-      // await axios.put(`http://locahost:5000/api/v1/admin/status`, {
-      
+      // await axios.put(`http://localhost:5000/api/v1/admin/status`, {
+
       id: id,
       status: status
 
@@ -29,8 +31,8 @@ function Admin() {
   // update order present location
   async function updatePresentLoc(id) {
     await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/presentLoc`, {
-          // await axios.put(`http://locahost:5000/api/v1/admin/presentLoc`, {
-    
+      // await axios.put(`http://localhost:5000/api/v1/admin/presentLoc`, {
+
       id: id,
       presentLoc: presentLoc
 
@@ -46,34 +48,29 @@ function Admin() {
   function renderUpdates() {
     return orders.map((order, i) => {
       return (
-        <ul key={i}>
-          <li>Recepient Name:</li>
-          <li>{order.name}</li>
-          <br/>
-          <li>Recipients Contact:</li>
-          <li>{order.contact}</li>
-          <br/>
-          <li>Order:</li>
-          <li>{order.order}</li>
-          <br/>
-          <li>Destination:</li>
-          <li>{order.destination}</li>
-          <br/>
-          <li>Pickup Location:</li>
-          <li>{order.pickup}</li>
-          <br/>
-          <li>Present Location : <span>{order.presentLoc}</span></li>
-          <li>
-            <input type="text" placeholder="Update present location" onChange={(e) => { setPresentLoc(e.target.value) }} />
-            <button onClick={() => { updatePresentLoc(order._id) }}>Present Location</button>
+        <ul key={i} className="container pt-4 bg-light list-group">
+          <li className='list-group-item'>Recepient Name: {order.name}</li>
+
+          <li className='list-group-item'>Recipients Contact: {order.contact}</li>
+
+          <li className='list-group-item'>Order: {order.order}</li>
+
+          <li className='list-group-item'>Destination: {order.destination}</li>
+
+          <li className='list-group-item'>Pickup Location: {order.pickup}</li>
+
+          <li className='list-group-item'>Present Location : <span>{order.presentLoc}</span><br />
+            <input className="mr-sm-2" type="text" placeholder="Update present location" onChange={(e) => { setPresentLoc(e.target.value) }} />
+            <button className="btn btn-outline-success my-2 my-sm-0" onClick={() => { updatePresentLoc(order._id) }}>Present Location</button>
+
           </li>
-          <br/>
-          <li>Status : <span>{order.status}</span></li>
-          <li>
-            <input type="text" placeholder="Update Status" onChange={(e) => { setStatus(e.target.value) }} />
-            <button onClick={() => { updateStatus(order._id) }}>Status</button>
+
+          <li className='list-group-item'>Status : <span>{order.status}</span><br />
+            <input className="mr-sm-2" type="text" placeholder="Update present location" type="text" placeholder="Update Status" onChange={(e) => { setStatus(e.target.value) }} />
+            <button className="btn btn-outline-success my-2 my-sm-0" onClick={() => { updateStatus(order._id) }}>Status</button>
           </li>
         </ul>
+
 
       )
     })

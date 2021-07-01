@@ -14,9 +14,9 @@ function AdminLogin() {
     e.preventDefault();
     const loginData = { email, password };
     await axios.post("https://safe-courier-app.herokuapp.com/api/v1/admin/adminLogin", loginData);
-        // await axios.post("http://locahost:5000/api/v1/admin/adminLogin", loginData);
+    // await axios.post("http://localhost:5000/api/v1/admin/adminLogin", loginData);
 
-    
+
     //load login componet & update state
     await getLoggedin();
 
@@ -25,7 +25,8 @@ function AdminLogin() {
 
   }
   return (
-    <div>
+    <div className="container pt-5">
+      <h1>Admin Panel</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <input type="email" placeholder="Email" onChange={(e) => { setEmail(e.target.value); }} value={email} />
@@ -34,7 +35,7 @@ function AdminLogin() {
           <input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value); }} value={password} />
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
         </div>
       </form>
     </div>

@@ -1,10 +1,12 @@
-ul{
- /* display: inline; */
+*{
+    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 ul li{
  list-style: none;
  display: inline;
- padding: 1rem;
+ padding: 2rem;
 }
 
 .navLink{
@@ -12,8 +14,12 @@ ul li{
    }
 
 form div{
-padding: .5rem;
+padding-bottom: 1rem;
 }
  form input{
      padding: .5rem;
+     width: 50%;
  }
+.admin{
+margin-top: 5rem;
+}

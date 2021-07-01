@@ -5,10 +5,14 @@
 
 * React
 * axios
+* bootstrap
 
 ## Main Files: Project Structure
 ```Project Folder
-     |-- src
+   |----Public
+        |--img
+        |--index.html
+   |----src
          |--componet
             |--Admin.js
             |--AdminLogin.js

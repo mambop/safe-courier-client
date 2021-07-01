@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 function OrderForm({ getOrders }) {
     const [name, setName] = useState();
@@ -8,41 +8,41 @@ function OrderForm({ getOrders }) {
     const [order, setOrder] = useState();
     const [destination, setDestination] = useState();
     const [pickup, setPickup] = useState();
+    const history = useHistory();
 
-    const {userId} = useParams();
 
     async function handleSubmit(e) {
         e.preventDefault();
         try {
             const orderData = { name, contact, order, destination, pickup };
             await axios.post('https://safe-courier-app.herokuapp.com/api/v1/orders/', orderData);
-            // await axios.post('http://locahost:5000/api/v1/orders/', orderData);
-            
+            // await axios.post('http://localhost:5000/api/v1/orders/', orderData);
+
+            history.push("/api/v1/users/orders");
         } catch (error) {
             console.error(error);
         }
     }
     return (
-        <div>
+        <div className="pt-5 container">
             <form onSubmit={handleSubmit}>
+                <div>
+                    <input className="mr-sm-2" type="text" placeholder="Recipients Name" onChange={(e) => { setName(e.target.value) }} value={name} />
+                </div>
+                <div>
+                    <input className="mr-sm-2" type="text" placeholder="Recipients Contact" onChange={(e) => { setContact(e.target.value) }} value={contact} />
+                </div>
+                <div>
+                    <input className="mr-sm-2" type="text" placeholder="Order" onChange={(e) => { setOrder(e.target.value) }} value={order} />
+                </div>
+                <div>
+                    <input className="mr-sm-2" type="text" placeholder="Destination" onChange={(e) => { setDestination(e.target.value) }} value={destination} />
+                </div>
+                <div>
+                    <input className="mr-sm-2" type="text" placeholder="Pickup Location" onChange={(e) => { setPickup(e.target.value) }} value={pickup} />
+                </div>
 
-                <div>
-                    <input type="text" placeholder="Recipients Name" onChange={(e) => { setName(e.target.value) }} value={name} />
-                </div>
-                <div>
-                    <input type="text" placeholder="Recipients Contact" onChange={(e) => { setContact(e.target.value) }} value={contact} />
-                </div>
-                <div>
-                    <input type="text" placeholder="Order" onChange={(e) => { setOrder(e.target.value) }} value={order} />
-                </div>
-                <div>
-                    <input type="text" placeholder="Destination" onChange={(e) => { setDestination(e.target.value) }} value={destination} />
-                </div>
-                <div>
-                    <input type="text" placeholder="Pickup Location" onChange={(e) => { setPickup(e.target.value) }} value={pickup} />
-                </div>
-           
-                <button type="submit">Submit</button>
+                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Submit</button>
             </form>
         </div>
     )

@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 
 function Signup() {
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { getLoggedin } = useContext(AuthContext);
@@ -15,9 +15,9 @@ function Signup() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const signupData = {email, password };
+      const signupData = { email, password };
       await axios.post("https://safe-courier-app.herokuapp.com/api/v1/auth/signup", signupData);
-      // await axios.post("http://locahost:5000/api/v1/auth/signup", signupData);
+      // await axios.post("http://localhost:5000/api/v1/auth/signup", signupData);
 
 
       //load signup componet & update state 
@@ -33,7 +33,7 @@ function Signup() {
     }
   }
   return (
-    <div>
+    <div className="container pt-5">
       <h1>Signup Form</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -43,7 +43,7 @@ function Signup() {
           <input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value); }} value={password} />
         </div>
         <div>
-          <button type="submit">Sign up</button>
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up</button>
         </div>
       </form>
     </div>
