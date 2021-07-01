@@ -47,7 +47,7 @@ function Home() {
                         </div>
                     </div>
                     <div className="footer-copyright text-center py-3">© 2021 Copyright:
-                        <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+                        <a href="https://safe-courier-phillip.netlify.app">Safe Courier</a>
                     </div>
 
                 </footer>
