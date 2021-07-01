@@ -21,11 +21,12 @@ function Login() {
     await getLoggedin();
 
     //redirect to home page after login
-    history.push("/api/v1/users/orders");
+    history.push("/api/v1/users/orders/");
 
   }
   return (
-    <div>
+    <div className="container pt-5">
+        <h1>Login Form</h1>
       <form onSubmit={handleSubmit} >
         <div>
           <input type="email" placeholder="Email" onChange={(e) => { setEmail(e.target.value); }} value={email} />
@@ -34,7 +35,7 @@ function Login() {
           <input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value); }} value={password} />
         </div>
         <div>
-          <button type="submit">Login</button>
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
         </div>
       </form>
     </div>

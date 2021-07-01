@@ -33,7 +33,7 @@ function Signup() {
     }
   }
   return (
-    <div>
+    <div className="container pt-5">
       <h1>Signup Form</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -43,7 +43,7 @@ function Signup() {
           <input type="password" placeholder="Password" onChange={(e) => { setPassword(e.target.value); }} value={password} />
         </div>
         <div>
-          <button type="submit">Sign up</button>
+          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Sign up</button>
         </div>
       </form>
     </div>

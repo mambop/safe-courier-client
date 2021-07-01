@@ -22,20 +22,20 @@ function Navbar() {
     }
 
     return (
-        <nav className="navbar navbar-dark bg-dark">
+        <nav className="navbar navbar-dark bg-dark navbar-nav">
             <ul>
-                <li><Link to="/api/v1/" className="navLink">Home</Link></li>
+                <li><Link to="/" className="navLink">Home</Link></li>
                 {loggedin === false &&
                     <>
                         <li><Link to="/api/v1/auth/signup" className="navLink">Signup</Link></li>
-                        <li><Link to="/api/v1/auth/login" className="navLink">User Login</Link></li>
-                        <li><Link to="/api/v1/admin/adminLogin/" className="navLink">Admin Login</Link></li>
+                        <li><Link to="/api/v1/auth/login" className="navLink">Login</Link></li>
+                        <li><Link to="/api/v1/admin/adminLogin/" className="navLink">Admin</Link></li>
                     </>
 
                 }
                 {loggedin === true &&
                     <>
-                      <li><Link to={"/api/v1/users/orders"} className="navLink">Orders</Link></li>
+                      <li><Link to={"/api/v1/users/orders/"} className="navLink">Orders</Link></li>
                         <li><Link to="/api/v1/create/" className="navLink">Create</Link></li>
                         <li><Link to="/api/v1/adminLogin/admin/" className="navLink">Admin</Link></li>
                         <li><Link to="/api/v1//auth/logout" className="navLink" onClick={logout}>Logout</Link></li>

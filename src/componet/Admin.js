@@ -9,7 +9,7 @@ function Admin() {
 
   // get user order
   async function getOrders() {
-    const reponse = await axios.get(' https://safe-courier-app.herokuapp.com/api/v1/admin');
+    const reponse = await axios.get(' https://safe-courier-app.herokuapp.com/api/v1/admin/');
     // const reponse = await axios.get('http://localhost:5000/api/v1/admin/');
 
     setOrders(reponse.data);

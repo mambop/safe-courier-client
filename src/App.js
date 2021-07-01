@@ -12,7 +12,7 @@ axios.defaults.withCredentials = true;
 function App() {
 
   return (
-<div className="bg-light container-fluid">
+<div className="">
       <AuthContextProvider>
         <Routes />
 

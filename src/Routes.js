@@ -18,7 +18,7 @@ function Routes() {
         <BrowserRouter>
             <Navbar />
             <Switch>
-                <Route exact path="/api/v1/"><Home /></Route>
+                <Route exact path="/"><Home /></Route>
                 {loggedin === false &&
                     <>
                         <Route path="/api/v1/auth/signup"><Signup /></Route>
@@ -30,7 +30,7 @@ function Routes() {
                 {loggedin === true &&
                     <>
                         <Route path="/api/v1/admin/"><Admin /></Route>
-                        <Route path="/api/v1/users/orders"><OrdersList /></Route>
+                        <Route path="/api/v1/users/orders/"><OrdersList /></Route>
                         <Route path="/api/v1/create/"><OrderForm /></Route>
                     </>
                 }

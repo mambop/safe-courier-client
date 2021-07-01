@@ -25,7 +25,7 @@ function OrderForm({ getOrders }) {
         }
     }
     return (
-        <div className="pt-5">
+        <div className="pt-5 container">
             <form onSubmit={handleSubmit}>
 
                 <div>

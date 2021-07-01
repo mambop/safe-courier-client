@@ -50,7 +50,7 @@ function OrdersList() {
                 <ul key={i} className="container pt-4 bg-light list-group">
                     <li className='list-group-item'>Recepient Name: {order.name}</li>
 
-                    <li className='list-group-item'>Recipients Contact: order.contact}</li>
+                    <li className='list-group-item'>Recipients Contact: {order.contact}</li>
 
                     <li className='list-group-item'>Order: {order.order}</li>
 
