@@ -14,14 +14,14 @@ function AdminLogin() {
     e.preventDefault();
     const loginData = { email, password };
     await axios.post("https://safe-courier-app.herokuapp.com/api/v1/admin/adminLogin", loginData);
-        // await axios.post("http://locahost:5000/api/v1/admin/adminLogin", loginData);
+        // await axios.post("http://localhost:5000/api/v1/admin/adminLogin", loginData);
 
     
     //load login componet & update state
     await getLoggedin();
 
     //redirect to home page after login
-    history.push("/api/v1/adminLogin/admin/");
+    history.push("/api/v1/admin/");
 
   }
   return (

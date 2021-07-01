@@ -18,22 +18,23 @@ function Routes() {
         <BrowserRouter>
             <Navbar />
             <Switch>
-                <Route exact path="/"><Home /></Route>
+                <Route exact path="/api/v1/"><Home /></Route>
                 {loggedin === false &&
                     <>
                         <Route path="/api/v1/auth/signup"><Signup /></Route>
                         <Route path="/api/v1/auth/login"><Login /></Route>
-                        <Route path="/api/v1/adminLogin"><AdminLogin /></Route>
+                        <Route path="/api/v1/admin/adminLogin"><AdminLogin /></Route>
 
                     </>
                 }
                 {loggedin === true &&
                     <>
-                        <Route path="/api/v1/adminLogin/admin/"><Admin /></Route>
+                        <Route path="/api/v1/admin/"><Admin /></Route>
                         <Route path="/api/v1/users/orders"><OrdersList /></Route>
                         <Route path="/api/v1/create/"><OrderForm /></Route>
                     </>
                 }
+                
             </Switch>
         </BrowserRouter>
     )

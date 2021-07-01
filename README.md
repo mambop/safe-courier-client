@@ -5,6 +5,7 @@
 
 * React
 * axios
+* bootstrap
 
 ## Main Files: Project Structure
 ```Project Folder

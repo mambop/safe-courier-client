@@ -17,7 +17,7 @@ function Signup() {
     try {
       const signupData = {email, password };
       await axios.post("https://safe-courier-app.herokuapp.com/api/v1/auth/signup", signupData);
-      // await axios.post("http://locahost:5000/api/v1/auth/signup", signupData);
+      // await axios.post("http://localhost:5000/api/v1/auth/signup", signupData);
 
 
       //load signup componet & update state 

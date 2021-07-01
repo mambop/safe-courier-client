@@ -5,17 +5,19 @@ import Routes from "./Routes";
 
 
 
+
 //allow cookie save from server
 axios.defaults.withCredentials = true;
 
 function App() {
 
   return (
-    <AuthContextProvider>
-      <Routes />
-      
-    </AuthContextProvider>
+<div className="bg-light container-fluid">
+      <AuthContextProvider>
+        <Routes />
 
+      </AuthContextProvider>
+</div>
   );
 }
 
