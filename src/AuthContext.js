@@ -1,5 +1,6 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react'
+import axiosApp from './axiosConfig';
 
 const AuthContext = createContext();
 
@@ -8,8 +9,9 @@ function AuthContextProvider(props) {
     const [loggedin, setLoggedin] = useState();
 
     async function getLoggedin() {
-        const loggedinRes = await axios.get("https://safe-courier-app.herokuapp.com/api/v1/auth/loggedin");
+        // const loggedinRes = await axios.get("https://safe-courier-app.herokuapp.com/api/v1/auth/loggedin");
         // const loggedinRes = await axios.get("http://localhost:5000/api/v1/auth/loggedin");
+        const loggedinRes = await axiosApp.get("/api/v1/auth/loggedin");
     
         setLoggedin(loggedinRes.data);
     }

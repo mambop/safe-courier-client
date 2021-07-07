@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import axios from 'axios';
+// import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import axiosApp from '../axiosConfig';
 
 function OrderForm({ getOrders }) {
     const [name, setName] = useState();
@@ -15,8 +16,8 @@ function OrderForm({ getOrders }) {
         e.preventDefault();
         try {
             const orderData = { name, contact, order, destination, pickup };
-            await axios.post('https://safe-courier-app.herokuapp.com/api/v1/orders/', orderData);
-            // await axios.post('http://localhost:5000/api/v1/orders/', orderData);
+            // await axios.post('https://safe-courier-app.herokuapp.com/api/v1/orders/', orderData);
+            await axiosApp.post('/api/v1/orders/', orderData);
 
             history.push("/api/v1/users/orders");
         } catch (error) {

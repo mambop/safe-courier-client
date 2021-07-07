@@ -36,7 +36,7 @@ function Home() {
                                     </a>
                                     <a className="ins-ic">
                                         <i className="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-                                        <i class="fab fa-google-plus-g"> </i>
+                                        <i className="fab fa-google-plus-g"> </i>
                                     </a>
                                     <a className="pin-ic">
                                         <i className="fab fa-pinterest fa-lg white-text fa-2x"> </i>

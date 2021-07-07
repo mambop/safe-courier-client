@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useContext } from 'react'
 import AuthContext from '../AuthContext';
 import { useHistory } from 'react-router-dom';
+import axiosApp from '../axiosConfig';
 
 function AdminLogin() {
 
@@ -13,8 +14,8 @@ function AdminLogin() {
   async function handleSubmit(e) {
     e.preventDefault();
     const loginData = { email, password };
-    await axios.post("https://safe-courier-app.herokuapp.com/api/v1/admin/adminLogin", loginData);
-    // await axios.post("http://localhost:5000/api/v1/admin/adminLogin", loginData);
+    // await axios.post("https://safe-courier-app.herokuapp.com/api/v1/admin/adminLogin", loginData);
+    await axiosApp.post("/api/v1/admin/adminLogin", loginData);
 
 
     //load login componet & update state

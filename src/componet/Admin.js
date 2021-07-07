@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
+// import axios from 'axios';
+import axiosApp from '../axiosConfig';
+
 
 function Admin() {
 
   const [orders, setOrders] = useState([]);
   const [status, setStatus] = useState("");
   const [presentLoc, setPresentLoc] = useState("");
-  const { id } = useParams();
+
 
   // get user order
   async function getOrders() {
-    const reponse = await axios.get('https://safe-courier-app.herokuapp.com/api/v1/admin/');
-    // const reponse = await axios.get('http://localhost:5000/api/v1/admin/');
+    // const reponse = await axios.get('https://safe-courier-app.herokuapp.com/api/v1/admin/');
+    const reponse = await axiosApp.get('/api/v1/admin/');
 
     setOrders(reponse.data);
   }
 
   // update order status
   async function updateStatus(id) {
-    await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/status`, {
-      // await axios.put(`http://localhost:5000/api/v1/admin/status`, {
+    // await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/status`, {
+      await axiosApp.put(`/api/v1/admin/status`, {
 
       id: id,
       status: status
@@ -30,8 +31,8 @@ function Admin() {
 
   // update order present location
   async function updatePresentLoc(id) {
-    await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/presentLoc`, {
-      // await axios.put(`http://localhost:5000/api/v1/admin/presentLoc`, {
+    // await axios.put(`https://safe-courier-app.herokuapp.com/api/v1/admin/presentLoc`, {
+      await axiosApp.put(`/api/v1/admin/presentLoc`, {
 
       id: id,
       presentLoc: presentLoc

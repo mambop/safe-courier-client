@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react'
-import axios from "axios";
+// import axios from "axios";
 import AuthContext from '../AuthContext';
 import { useHistory } from 'react-router-dom';
+import axiosApp from '../axiosConfig';
 
 
 
@@ -16,8 +17,8 @@ function Signup() {
     e.preventDefault();
     try {
       const signupData = { email, password };
-      await axios.post("https://safe-courier-app.herokuapp.com/api/v1/auth/signup", signupData);
-      // await axios.post("http://localhost:5000/api/v1/auth/signup", signupData);
+      // await axios.post("https://safe-courier-app.herokuapp.com/api/v1/auth/signup", signupData);
+      await axiosApp.post("/api/v1/auth/signup", signupData);
 
 
       //load signup componet & update state 

@@ -1,7 +1,8 @@
-import axios from 'axios';
+// import axios from 'axios';
 import React, { useContext } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 import AuthContext from '../AuthContext';
+import axiosApp from '../axiosConfig';
 
 function Navbar() {
 
@@ -11,8 +12,8 @@ function Navbar() {
 
     //handle user logout
     async function logout() {
-        await axios.get("https://safe-courier-app.herokuapp.com/api/v1/auth/logout");
-        // await axios.get("http://localhost:5000/api/v1/auth/logout");
+        // await axios.get("https://safe-courier-app.herokuapp.com/api/v1/auth/logout");
+        await axiosApp.get("/api/v1/auth/logout");
 
         //load home componet & update state 
         await getLoggedin();
